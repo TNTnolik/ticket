@@ -1,5 +1,5 @@
 FROM python:3.10-alpine
-WORKDIR /backend
-COPY ./req.txt /backend
-RUN pip install --no-cache-dir --upgrade -r /backend/req.txt
+WORKDIR /code
+COPY ./req.txt /code
+RUN pip install --no-cache-dir --upgrade -r /code/req.txt
 

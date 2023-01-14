@@ -1,12 +1,12 @@
 from fastapi import FastAPI, Depends
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.exc import IntegrityError
-from .db.service import init_models, get_session, get_tickets, add_ticket
-from .db.schemas import Ticket
-import asyncio
+from db.service import init_models, get_session, get_tickets, add_ticket
+from db.schemas import Ticket
 
 
 app = FastAPI()
+
 
 @app.get("/tickets", response_model=list[Ticket])
 async def r_get_tickets(session: AsyncSession = Depends(get_session)):
@@ -24,6 +24,3 @@ async def r_add_ticket(ticket: Ticket, session: AsyncSession = Depends(get_sessi
         await session.rollback()
 
 
-@app.get("/init")
-def init():
-    asyncio.run(init_models())

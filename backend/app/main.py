@@ -2,6 +2,7 @@ from fastapi import Depends, FastAPI
 from sqlalchemy.exc import IntegrityError
 from sqlalchemy.ext.asyncio import AsyncSession
 
+
 from db.schemas import Ticket
 from db.service import add_ticket, get_session, get_tickets
 
